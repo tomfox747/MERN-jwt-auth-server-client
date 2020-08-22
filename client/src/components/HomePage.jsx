@@ -55,6 +55,18 @@ const HomePage = () =>{
         history.push('/')
     }
 
+    const delete_account = () =>{
+        let cookie = new Cookies()
+        let access_token = cookie.get('access_token')
+        axios.post('http://localhost:5000/create_account/delete_account',{data:"test"},{headers:{'Authorization': `Bearer ${access_token}`}})
+        .then((response) =>{
+            console.log(response)
+        })
+        .catch((e) =>{
+            console.log(e)
+        })
+    }
+
     return(
         <div>
             <p>Home Page</p>
@@ -62,6 +74,7 @@ const HomePage = () =>{
             <button onClick={(e) => getInfo(e)}>Get user Info</button>
             <button onClick={(e) => refresh_access_token(e)}>Refresh Token</button>
             <button onClick={(e) => logout()}>Logout</button>
+            <button onClick={(e) => delete_account(e)}>Delete Account</button>
         </div>
     )
 }
