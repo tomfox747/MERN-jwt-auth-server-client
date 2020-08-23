@@ -31,7 +31,7 @@ const SignInPage = () =>{
             cookie.set('refresh_token', response.data.refresh_token)
             history.push('/homepage')
         }).catch((error) =>{
-            console.log(error)
+            alert(error.response.data)
         })
     }
 
@@ -41,7 +41,7 @@ const SignInPage = () =>{
         .then((response) =>{
             alert("account created, please sign in")
         }).catch((error) =>{
-            console.log(error)
+            alert(error.response.data)
         })
     }
 

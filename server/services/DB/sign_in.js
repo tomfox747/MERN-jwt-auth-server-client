@@ -5,11 +5,9 @@ const db_sign_in_function = async (email, password) =>{
     
     try{
         let user = await userModel.findOne({email:email}).lean().exec().then((doc) => doc)
-        console.log(user)
         if (!user || user === null){
             throw new CustomError("custom", "no user found", 333)
         }
-        
         if (user.password !== password){
             throw new CustomError("custom", "incorrect password", 333)
         }
